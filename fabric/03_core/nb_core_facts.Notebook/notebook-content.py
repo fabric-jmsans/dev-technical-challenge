@@ -24,6 +24,8 @@
 
 # MAGIC %%sql
 # MAGIC 
+# MAGIC --DROP TABLE core.fact_clinical_trial;
+# MAGIC 
 # MAGIC CREATE TABLE IF NOT EXISTS core.fact_clinical_trial (
 # MAGIC     trial_id STRING,
 # MAGIC     start_date DATE,
@@ -31,6 +33,7 @@
 # MAGIC     organization_key STRING,
 # MAGIC     condition_key STRING,
 # MAGIC     intervention_key STRING,
+# MAGIC     study_key STRING,
 # MAGIC 
 # MAGIC     overall_status STRING,
 # MAGIC     study_type STRING,
@@ -72,7 +75,7 @@
 # MAGIC         o.organization_key,
 # MAGIC         c.condition_key,
 # MAGIC         i.intervention_key,
-# MAGIC 
+# MAGIC         u.study_key,
 # MAGIC         s.overall_status,
 # MAGIC         s.study_type,
 # MAGIC         s.phases
@@ -101,6 +104,13 @@
 # MAGIC             '|',
 # MAGIC             COALESCE(TRIM(s.intervention_description), 'UNKNOWN')
 # MAGIC         ), 256) = i.intervention_key
+# MAGIC 
+# MAGIC     LEFT JOIN core.dim_study u
+# MAGIC         ON SHA2(CONCAT(
+# MAGIC             COALESCE(TRIM(s.brief_title), 'UNKNOWN'),
+# MAGIC             '|',
+# MAGIC             COALESCE(TRIM(s.full_title), 'UNKNOWN')
+# MAGIC         ), 256) = u.study_key        
 # MAGIC ) s
 # MAGIC 
 # MAGIC ON t.trial_id = s.trial_id
@@ -112,6 +122,7 @@
 # MAGIC     organization_key,
 # MAGIC     condition_key,
 # MAGIC     intervention_key,
+# MAGIC     study_key,
 # MAGIC     overall_status,
 # MAGIC     study_type,
 # MAGIC     phases
@@ -122,6 +133,7 @@
 # MAGIC     s.organization_key,
 # MAGIC     s.condition_key,
 # MAGIC     s.intervention_key,
+# MAGIC     s.study_key,
 # MAGIC     s.overall_status,
 # MAGIC     s.study_type,
 # MAGIC     s.phases

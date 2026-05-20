@@ -99,8 +99,24 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_organization;
+# MAGIC CREATE TABLE IF NOT EXISTS core.dim_study (
+# MAGIC     study_key STRING,
+# MAGIC     study_short_title STRING,
+# MAGIC     study_official_title STRING
+# MAGIC );
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
 # MAGIC 
+# MAGIC TRUNCATE TABLE core.dim_organization;
 # MAGIC 
 # MAGIC MERGE INTO core.dim_organization t
 # MAGIC USING (
@@ -146,10 +162,56 @@
 # CELL ********************
 
 # MAGIC %%sql
+# MAGIC select count(1) from stg.clinical_trials
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
 # MAGIC 
 # MAGIC SELECT *
 # MAGIC FROM stg.clinical_trials
-# MAGIC LIMIT 3
+# MAGIC LIMIT 10
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC SELECT  COALESCE(overall_status, 'Unknown') as overall_status, 
+# MAGIC         count(1) as cases
+# MAGIC FROM stg.clinical_trials
+# MAGIC group by overall_status
+# MAGIC order by cases desc
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC select count(1) from 
+# MAGIC (
+# MAGIC select brief_title, full_title , count(1) as cases
+# MAGIC FROM stg.clinical_trials
+# MAGIC group by brief_title, full_title 
+# MAGIC )
+
 
 # METADATA ********************
 
@@ -240,6 +302,45 @@
 
 # MAGIC %%sql
 # MAGIC 
+# MAGIC TRUNCATE TABLE core.dim_study;
+# MAGIC 
+# MAGIC MERGE INTO core.dim_study t
+# MAGIC USING (
+# MAGIC     SELECT DISTINCT
+# MAGIC         SHA2(CONCAT(
+# MAGIC             COALESCE(TRIM(brief_title), 'UNKNOWN'),
+# MAGIC             '|',
+# MAGIC             COALESCE(TRIM(full_title), 'UNKNOWN')
+# MAGIC         ), 256) AS study_key,
+# MAGIC         COALESCE(TRIM(brief_title), 'Unknown') AS study_short_title,
+# MAGIC         COALESCE(TRIM(full_title), 'Unknown') AS study_official_title
+# MAGIC     FROM stg.clinical_trials
+# MAGIC ) s
+# MAGIC ON t.study_key = s.study_key
+# MAGIC 
+# MAGIC WHEN NOT MATCHED THEN
+# MAGIC INSERT (
+# MAGIC     study_key,
+# MAGIC     study_short_title,
+# MAGIC     study_official_title
+# MAGIC )
+# MAGIC VALUES (
+# MAGIC     s.study_key,
+# MAGIC     s.study_short_title,
+# MAGIC     s.study_official_title
+# MAGIC );
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC 
 # MAGIC SELECT LEFT(start_date,4), count(1) as cases
 # MAGIC FROM stg.clinical_trials
 # MAGIC GROUP BY LEFT(start_date,4)
@@ -303,6 +404,36 @@
 # META   "language_group": "synapse_pyspark",
 # META   "frozen": true,
 # META   "editable": false
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC SELECT standard_age , count(1) cases
+# MAGIC FROM stg.clinical_trials
+# MAGIC group by standard_age
+# MAGIC order  by cases desc
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC SELECT study_type , count(1) cases
+# MAGIC FROM stg.clinical_trials
+# MAGIC group by study_type
+# MAGIC order by cases desc
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
 # META }
 
 # CELL ********************

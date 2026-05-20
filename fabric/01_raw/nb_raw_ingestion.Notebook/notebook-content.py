@@ -112,14 +112,3 @@ print(f"Total distinct rows: {df.select('kaggle_id').distinct().count()}")
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
-
-# CELL ********************
-
-df.select("kaggle_id").show(5, False)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
