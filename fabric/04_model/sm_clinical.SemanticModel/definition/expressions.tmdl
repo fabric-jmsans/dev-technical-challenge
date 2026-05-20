@@ -1,0 +1,11 @@
+expression 'DirectLake - lh_clinical' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/0a207e52-568d-442c-a669-d39849fb8cc5/99f8b8c7-918b-4151-a05c-3b3707ad8488", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 6b407e5e-9377-4db7-97e3-fa02e38c01ca
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[sandbox].[clinical_trials]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[raw].[clinical_trials]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[stg].[clinical_trials]"}},"objectType":"Table"}]
+

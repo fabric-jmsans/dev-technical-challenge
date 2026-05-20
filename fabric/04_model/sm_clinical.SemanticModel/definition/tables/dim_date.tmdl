@@ -1,0 +1,101 @@
+table dim_date
+	lineageTag: 5d018e26-dce5-47b4-8d2b-212b9d9757ee
+	sourceLineageTag: [core].[dim_date]
+	dataCategory: Time
+
+	column date_key
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: d7e6fa7b-55b6-4417-9b4e-f719be6d2e83
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: ab30a309-dc5b-4344-9660-25eaada78b44
+		sourceLineageTag: year
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: dcfc9220-0183-4125-9cb3-234b8045047f
+		sourceLineageTag: month
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 34833e08-4f41-4682-9e7a-3a4c1693dd1c
+		sourceLineageTag: month_name
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: cf5b563e-47c1-4486-a031-09a97d72416e
+		sourceLineageTag: quarter
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 60a7368a-350e-412b-9401-c03cd656fa57
+		sourceLineageTag: week
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: int64
+		formatString: 0
+		lineageTag: cc71fed8-bd15-4550-8b3f-b8c2f8c6b9c4
+		sourceLineageTag: day
+		summarizeBy: none
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: d1b57141-13ab-438a-8ddd-5149b54dd6b1
+		sourceLineageTag: day_name
+		summarizeBy: none
+		sourceColumn: day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 748d5f27-03c9-420e-8419-a0c9bec926c0
+		sourceLineageTag: is_weekend
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = entity
+		mode: directLake
+		source
+			entityName: dim_date
+			schemaName: core
+			expressionSource: 'DirectLake - lh_clinical'
+

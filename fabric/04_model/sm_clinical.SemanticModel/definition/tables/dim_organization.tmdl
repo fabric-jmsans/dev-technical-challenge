@@ -1,0 +1,47 @@
+table dim_organization
+	lineageTag: e44d84d5-e892-496f-89de-0a1860ab0605
+	sourceLineageTag: [core].[dim_organization]
+
+	column organization_key
+		dataType: string
+		lineageTag: a8f4fb11-71d1-488a-80bd-bcb77bd21999
+		sourceLineageTag: organization_key
+		summarizeBy: none
+		sourceColumn: organization_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column organization_full_name
+		dataType: string
+		lineageTag: 0dca4436-e9d5-4325-baf8-02c3e5b9119f
+		sourceLineageTag: organization_full_name
+		summarizeBy: none
+		sourceColumn: organization_full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column organization_class
+		dataType: string
+		lineageTag: 1d93e458-de6a-4add-aada-00f7d97dd8bb
+		sourceLineageTag: organization_class
+		summarizeBy: none
+		sourceColumn: organization_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsible_party
+		dataType: string
+		lineageTag: d3537adf-7f38-4c3f-84dc-4510bd49b645
+		sourceLineageTag: responsible_party
+		summarizeBy: none
+		sourceColumn: responsible_party
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_organization = entity
+		mode: directLake
+		source
+			entityName: dim_organization
+			schemaName: core
+			expressionSource: 'DirectLake - lh_clinical'
+

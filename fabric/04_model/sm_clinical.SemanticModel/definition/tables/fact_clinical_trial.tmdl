@@ -1,0 +1,84 @@
+table fact_clinical_trial
+	lineageTag: 0e3e033f-e497-4302-9118-5d807994f6f5
+	sourceLineageTag: [core].[fact_clinical_trial]
+
+	column trial_id
+		dataType: string
+		lineageTag: c7e091ba-eaf6-4d61-8505-0019da1c9f22
+		sourceLineageTag: trial_id
+		summarizeBy: none
+		sourceColumn: trial_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e7e6706b-b8f0-48db-b15b-0af5e41cca6e
+		sourceLineageTag: start_date
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column organization_key
+		dataType: string
+		lineageTag: 9ebaa5ef-0d39-45d3-b7cf-522d46affe8e
+		sourceLineageTag: organization_key
+		summarizeBy: none
+		sourceColumn: organization_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column condition_key
+		dataType: string
+		lineageTag: 975c60cf-6da5-4862-838e-67ef6676e708
+		sourceLineageTag: condition_key
+		summarizeBy: none
+		sourceColumn: condition_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column intervention_key
+		dataType: string
+		lineageTag: d622e6a8-6754-4644-8ecf-b7baa9399dc6
+		sourceLineageTag: intervention_key
+		summarizeBy: none
+		sourceColumn: intervention_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column overall_status
+		dataType: string
+		lineageTag: 1a755c3b-38e1-4ec4-950f-a7cb67c21762
+		sourceLineageTag: overall_status
+		summarizeBy: none
+		sourceColumn: overall_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column study_type
+		dataType: string
+		lineageTag: 3c0633cd-3392-4aa5-8761-61c5c1569218
+		sourceLineageTag: study_type
+		summarizeBy: none
+		sourceColumn: study_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column phases
+		dataType: string
+		lineageTag: d075d13e-1e28-4ae2-ad19-e6929dbbbe76
+		sourceLineageTag: phases
+		summarizeBy: none
+		sourceColumn: phases
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_clinical_trial = entity
+		mode: directLake
+		source
+			entityName: fact_clinical_trial
+			schemaName: core
+			expressionSource: 'DirectLake - lh_clinical'
+
