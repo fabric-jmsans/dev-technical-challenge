@@ -17,4 +17,5 @@ ref table dim_intervention
 ref table dim_condition
 ref table dim_organization
 ref table dim_date
+ref table dim_study
 

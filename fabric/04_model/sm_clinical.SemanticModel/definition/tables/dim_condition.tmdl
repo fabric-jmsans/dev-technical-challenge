@@ -4,10 +4,13 @@ table dim_condition
 
 	column condition_key
 		dataType: string
+		isHidden
 		lineageTag: b8d968d2-fb10-4622-acb4-f96571c2e3f4
 		sourceLineageTag: condition_key
 		summarizeBy: none
 		sourceColumn: condition_key
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

@@ -4,10 +4,13 @@ table dim_intervention
 
 	column intervention_key
 		dataType: string
+		isHidden
 		lineageTag: 5205a9be-db2a-4663-bfe3-5f55becb01bb
 		sourceLineageTag: intervention_key
 		summarizeBy: none
 		sourceColumn: intervention_key
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

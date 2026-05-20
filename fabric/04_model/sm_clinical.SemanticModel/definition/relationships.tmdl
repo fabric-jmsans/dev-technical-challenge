@@ -14,3 +14,7 @@ relationship 3f4473f2-fa3e-d94e-da09-8bbabfc6721c
 	fromColumn: fact_clinical_trial.organization_key
 	toColumn: dim_organization.organization_key
 
+relationship 9b1575b9-e5a5-4ba9-402d-46ab9e7ff9c3
+	fromColumn: fact_clinical_trial.study_key
+	toColumn: dim_study.study_key
+

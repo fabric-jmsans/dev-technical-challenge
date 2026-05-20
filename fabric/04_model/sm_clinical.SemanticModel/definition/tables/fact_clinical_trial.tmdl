@@ -13,38 +13,58 @@ table fact_clinical_trial
 
 	column start_date
 		dataType: dateTime
-		formatString: General Date
+		isHidden
+		formatString: dd/mm/yyyy
 		lineageTag: e7e6706b-b8f0-48db-b15b-0af5e41cca6e
 		sourceLineageTag: start_date
 		summarizeBy: none
 		sourceColumn: start_date
 
+		changedProperty = IsHidden
+
+		changedProperty = FormatString
+
+		changedProperty = DataType
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column organization_key
 		dataType: string
+		isHidden
 		lineageTag: 9ebaa5ef-0d39-45d3-b7cf-522d46affe8e
 		sourceLineageTag: organization_key
 		summarizeBy: none
 		sourceColumn: organization_key
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column condition_key
 		dataType: string
+		isHidden
 		lineageTag: 975c60cf-6da5-4862-838e-67ef6676e708
 		sourceLineageTag: condition_key
 		summarizeBy: none
 		sourceColumn: condition_key
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column intervention_key
 		dataType: string
+		isHidden
 		lineageTag: d622e6a8-6754-4644-8ecf-b7baa9399dc6
 		sourceLineageTag: intervention_key
 		summarizeBy: none
 		sourceColumn: intervention_key
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -72,6 +92,18 @@ table fact_clinical_trial
 		sourceLineageTag: phases
 		summarizeBy: none
 		sourceColumn: phases
+
+		annotation SummarizationSetBy = Automatic
+
+	column study_key
+		dataType: string
+		isHidden
+		lineageTag: b2630e7f-8a57-43b8-b051-62d391ce9fa8
+		sourceLineageTag: study_key
+		summarizeBy: none
+		sourceColumn: study_key
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

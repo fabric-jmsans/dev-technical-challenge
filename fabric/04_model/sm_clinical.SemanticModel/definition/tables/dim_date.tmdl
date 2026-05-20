@@ -6,13 +6,23 @@ table dim_date
 	column date_key
 		dataType: dateTime
 		isKey
-		formatString: General Date
+		formatString: dd/mm/yyyy
 		lineageTag: d7e6fa7b-55b6-4417-9b4e-f719be6d2e83
 		sourceLineageTag: date_key
 		summarizeBy: none
 		sourceColumn: date_key
 
+		changedProperty = IsHidden
+
+		changedProperty = FormatString
+
+		changedProperty = DataType
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column year
 		dataType: int64

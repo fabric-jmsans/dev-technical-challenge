@@ -4,10 +4,13 @@ table dim_organization
 
 	column organization_key
 		dataType: string
+		isHidden
 		lineageTag: a8f4fb11-71d1-488a-80bd-bcb77bd21999
 		sourceLineageTag: organization_key
 		summarizeBy: none
 		sourceColumn: organization_key
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
