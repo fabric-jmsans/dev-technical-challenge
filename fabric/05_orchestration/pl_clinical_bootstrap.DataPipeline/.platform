@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_clinical_bootstrap"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2e92ca31-0974-9dbf-4279-ee1b57b752d7"
+  }
+}
