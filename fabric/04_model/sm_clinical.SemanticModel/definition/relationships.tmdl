@@ -1,20 +1,20 @@
 relationship c78b6e8d-5dfc-6b85-e58a-79015cf13b72
-	fromColumn: fact_clinical_trial.start_date
-	toColumn: dim_date.date_key
+	fromColumn: 'Clinical trial'.'Start Date'
+	toColumn: Calendar.'Date Key'
 
 relationship 04f227a4-7e33-9248-ed35-53f32c27de87
-	fromColumn: fact_clinical_trial.condition_key
-	toColumn: dim_condition.condition_key
+	fromColumn: 'Clinical trial'.'Condition Key'
+	toColumn: Condition.'Condition Key'
 
 relationship 55115c2f-09b6-96f8-a450-d577d524f7a7
-	fromColumn: fact_clinical_trial.intervention_key
-	toColumn: dim_intervention.intervention_key
+	fromColumn: 'Clinical trial'.'Intervention Key'
+	toColumn: Intervention.'Intervention Key'
 
 relationship 3f4473f2-fa3e-d94e-da09-8bbabfc6721c
-	fromColumn: fact_clinical_trial.organization_key
-	toColumn: dim_organization.organization_key
+	fromColumn: 'Clinical trial'.'Organization Key'
+	toColumn: Organization.'Organization Key'
 
 relationship 9b1575b9-e5a5-4ba9-402d-46ab9e7ff9c3
-	fromColumn: fact_clinical_trial.study_key
-	toColumn: dim_study.study_key
+	fromColumn: 'Clinical trial'.'Study Key'
+	toColumn: Study.'Study Key'
 

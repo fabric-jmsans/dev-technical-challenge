@@ -12,10 +12,10 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
 
-ref table fact_clinical_trial
-ref table dim_intervention
-ref table dim_condition
-ref table dim_organization
-ref table dim_date
-ref table dim_study
+ref table 'Clinical trial'
+ref table Intervention
+ref table Condition
+ref table Organization
+ref table Calendar
+ref table Study
 
