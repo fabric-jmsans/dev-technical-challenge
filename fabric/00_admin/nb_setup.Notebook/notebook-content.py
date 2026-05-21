@@ -163,3 +163,35 @@
 # META   "language": "sparksql",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC 
+# MAGIC --DROP TABLE core.fact_clinical_trial;
+# MAGIC 
+# MAGIC CREATE TABLE IF NOT EXISTS core.fact_clinical_trial (
+# MAGIC     trial_id STRING,
+# MAGIC     start_date DATE,
+# MAGIC 
+# MAGIC     organization_key STRING,
+# MAGIC     condition_key STRING,
+# MAGIC     intervention_key STRING,
+# MAGIC     study_key STRING,
+# MAGIC 
+# MAGIC     overall_status STRING,
+# MAGIC     study_type STRING,
+# MAGIC     phases STRING,
+# MAGIC     primary_purpose STRING,
+# MAGIC     standard_age STRING,
+# MAGIC     outcome_measure STRING
+# MAGIC 
+# MAGIC 
+# MAGIC );
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
