@@ -20,37 +20,42 @@
 # META   }
 # META }
 
-# CELL ********************
+# MARKDOWN ********************
 
-# MAGIC %%sql
-# MAGIC 
-# MAGIC --DROP TABLE core.fact_clinical_trial;
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.fact_clinical_trial (
-# MAGIC     trial_id STRING,
-# MAGIC     start_date DATE,
-# MAGIC 
-# MAGIC     organization_key STRING,
-# MAGIC     condition_key STRING,
-# MAGIC     intervention_key STRING,
-# MAGIC     study_key STRING,
-# MAGIC 
-# MAGIC     overall_status STRING,
-# MAGIC     study_type STRING,
-# MAGIC     phases STRING,
-# MAGIC     primary_purpose STRING,
-# MAGIC     standard_age STRING,
-# MAGIC     outcome_measure STRING
-# MAGIC 
-# MAGIC 
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
+# ## Fact Table Load: `core.fact_clinical_trial`
+# 
+# ### Overview
+# 
+# This notebook is responsible for loading data into the `core.fact_clinical_trial` fact table.
+# 
+# The loading strategy follows a **merge-based ingestion pattern**:
+# - Data is sourced from the `stg.clinical_trials` staging table
+# - Surrogate/business keys are resolved via joins to dimension tables
+# - The final result is upserted into the fact table
+# 
+# ---
+# 
+# ### Loading Strategy
+# 
+# The process consists of two steps:
+# 
+# 1. **Table reset (optional / full refresh step)**
+#    - The target fact table is truncated before loading
+#    - This ensures a clean state before re-inserting data
+# 
+# 2. **Merge operation**
+#    - Data from staging is transformed and enriched
+#    - Dimension keys are resolved using hashed natural keys
+#    - Records are inserted into the fact table if they do not already exist
+# 
+# ---
+# 
+# ### ⚠️ Important Note on TRUNCATE
+# 
+# The current implementation includes a:
+# 
+# ```sql
+# TRUNCATE TABLE core.fact_clinical_trial
 
 # CELL ********************
 
@@ -125,6 +130,7 @@
 # MAGIC WHEN NOT MATCHED THEN
 # MAGIC INSERT (
 # MAGIC     trial_id,
+# MAGIC     date_key, 
 # MAGIC     start_date,
 # MAGIC     organization_key,
 # MAGIC     condition_key,
@@ -139,7 +145,8 @@
 # MAGIC )
 # MAGIC VALUES (
 # MAGIC     s.trial_id,
-# MAGIC     s.start_date,
+# MAGIC     YEAR(s.start_date)*10000 + MONTH(s.start_date)*100+ DAY(s.start_date),
+# MAGIC     s.start_date,    
 # MAGIC     s.organization_key,
 # MAGIC     s.condition_key,
 # MAGIC     s.intervention_key,
@@ -162,7 +169,7 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC select * from  core.fact_clinical_trial limit 3
+# MAGIC select * from  core.fact_clinical_trial limit 10
 
 # METADATA ********************
 

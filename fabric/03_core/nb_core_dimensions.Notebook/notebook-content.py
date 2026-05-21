@@ -20,103 +20,75 @@
 # META   }
 # META }
 
-# CELL ********************
+# MARKDOWN ********************
 
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_organization (
-# MAGIC     organization_key STRING,
-# MAGIC     organization_full_name STRING,
-# MAGIC     organization_class STRING,
-# MAGIC     responsible_party STRING
-# MAGIC );
+# # Core Dimension Loading
+# 
+# ## Objective
+# 
+# This notebook loads and transforms data from the staging layer into the core dimensional model.
+# 
+# The process:
+# - extracts and standardizes business entities from staging data
+# - applies deterministic business key generation
+# - loads dimension tables using MERGE operations to ensure uniqueness
+# 
+# Source layer:
+# `stg`
+# 
+# Target layer:
+# `core`
+# 
+# During development, dimension tables may be truncated before reload to simplify iterative testing and rapid model changes.
 
-# METADATA ********************
+# MARKDOWN ********************
 
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_condition (
-# MAGIC     condition_key STRING,
-# MAGIC     condition_name STRING,
-# MAGIC     medical_subject_headings STRING
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_intervention (
-# MAGIC     intervention_key STRING,
-# MAGIC     intervention_name STRING,
-# MAGIC     intervention_description STRING
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_date (
-# MAGIC     date_key DATE,
-# MAGIC     year INT,
-# MAGIC     month INT,
-# MAGIC     month_name STRING,
-# MAGIC     quarter INT,
-# MAGIC     week INT,
-# MAGIC     day INT,
-# MAGIC     day_name STRING,
-# MAGIC     is_weekend BOOLEAN
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_study (
-# MAGIC     study_key STRING,
-# MAGIC     study_short_title STRING,
-# MAGIC     study_official_title STRING
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
+# ## Development Reset
+# 
+# During development and testing, core tables are truncated before reloading data.
+# 
+# This approach simplifies:
+# - iterative model changes
+# - business rule adjustments
+# - schema evolution
+# - validation of transformation logic
+# 
+# In production environments, tables would normally be maintained incrementally using MERGE operations without full truncation.
 
 # CELL ********************
 
 # MAGIC %%sql
 # MAGIC 
 # MAGIC TRUNCATE TABLE core.dim_organization;
+# MAGIC TRUNCATE TABLE core.dim_condition;
+# MAGIC TRUNCATE TABLE core.dim_intervention;
+# MAGIC TRUNCATE TABLE core.dim_study;
+# MAGIC TRUNCATE TABLE core.dim_date;
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Load Dimension Data
+# 
+# This section populates the dimension tables from the staging layer.
+# 
+# The process:
+# - extracts distinct business entities
+# - standardizes attribute values
+# - generates deterministic business keys
+# - loads new records using MERGE logic
+# 
+# The MERGE strategy supports future incremental loading patterns while preventing duplicate dimension entries.
+
+# CELL ********************
+
+# MAGIC %%sql
 # MAGIC 
 # MAGIC MERGE INTO core.dim_organization t
 # MAGIC USING (
@@ -224,8 +196,6 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_condition;
-# MAGIC 
 # MAGIC MERGE INTO core.dim_condition t
 # MAGIC USING (
 # MAGIC     SELECT DISTINCT
@@ -263,8 +233,6 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_intervention;
-# MAGIC 
 # MAGIC MERGE INTO core.dim_intervention t
 # MAGIC USING (
 # MAGIC     SELECT DISTINCT
@@ -301,8 +269,6 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_study;
 # MAGIC 
 # MAGIC MERGE INTO core.dim_study t
 # MAGIC USING (
@@ -439,8 +405,20 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_date;
+# MAGIC describe core.dim_date
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark",
+# META   "frozen": true,
+# META   "editable": false
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
 # MAGIC 
 # MAGIC WITH calendar AS (
 # MAGIC     SELECT explode(
@@ -449,20 +427,21 @@
 # MAGIC             to_date('2024-12-31'),
 # MAGIC             interval 1 day
 # MAGIC         )
-# MAGIC     ) AS date_key
+# MAGIC     ) AS date_value
 # MAGIC )
 # MAGIC 
 # MAGIC INSERT INTO core.dim_date
 # MAGIC SELECT
-# MAGIC     date_key,
-# MAGIC     YEAR(date_key) AS year,
-# MAGIC     MONTH(date_key) AS month,
-# MAGIC     DATE_FORMAT(date_key, 'MMMM') AS month_name,
-# MAGIC     QUARTER(date_key) AS quarter,
-# MAGIC     WEEKOFYEAR(date_key) AS week,
-# MAGIC     DAY(date_key) AS day,
-# MAGIC     DATE_FORMAT(date_key, 'EEEE') AS day_name,
-# MAGIC     CASE WHEN DAYOFWEEK(date_key) IN (1, 7) THEN true ELSE false END AS is_weekend
+# MAGIC     YEAR(date_value)*10000 + MONTH(date_value) *100 + DAY(date_value) AS date_key,
+# MAGIC     date_value AS date_value,
+# MAGIC     YEAR(date_value) AS year,
+# MAGIC     MONTH(date_value) AS month,
+# MAGIC     DATE_FORMAT(date_value, 'MMMM') AS month_name,
+# MAGIC     QUARTER(date_value) AS quarter,
+# MAGIC     WEEKOFYEAR(date_value) AS week,
+# MAGIC     DAY(date_value) AS day,
+# MAGIC     DATE_FORMAT(date_value, 'EEEE') AS day_name,
+# MAGIC     CASE WHEN DAYOFWEEK(date_value) IN (1, 7) THEN true ELSE false END AS is_weekend
 # MAGIC FROM calendar;
 
 

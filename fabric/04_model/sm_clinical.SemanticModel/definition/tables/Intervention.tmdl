@@ -1,10 +1,11 @@
-table dim_intervention
+table Intervention
 	lineageTag: d3228b7e-d97c-42b5-ac72-27a47ae1db35
 	sourceLineageTag: [core].[dim_intervention]
 
-	column intervention_key
+	column 'Intervention Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: 5205a9be-db2a-4663-bfe3-5f55becb01bb
 		sourceLineageTag: intervention_key
 		summarizeBy: none
@@ -12,30 +13,38 @@ table dim_intervention
 
 		changedProperty = IsHidden
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	column intervention_name
+	column 'Intervention Name'
 		dataType: string
 		lineageTag: 1efa995a-fe09-4a45-92e0-b9f2f6e2b1b6
 		sourceLineageTag: intervention_name
 		summarizeBy: none
 		sourceColumn: intervention_name
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	column intervention_description
+	column 'Intervention Description'
 		dataType: string
 		lineageTag: 6d371d54-f33c-4a01-ad83-89b54ef3ae85
 		sourceLineageTag: intervention_description
 		summarizeBy: none
 		sourceColumn: intervention_description
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	partition dim_intervention = entity
+	partition Intervention = entity
 		mode: directLake
 		source
 			entityName: dim_intervention
 			schemaName: core
 			expressionSource: 'DirectLake - lh_clinical'
+
+	changedProperty = Name
 

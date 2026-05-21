@@ -1,10 +1,11 @@
-table dim_condition
+table Condition
 	lineageTag: 55e2176d-1ea9-482d-850a-a4dd44229a1e
 	sourceLineageTag: [core].[dim_condition]
 
-	column condition_key
+	column 'Condition Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: b8d968d2-fb10-4622-acb4-f96571c2e3f4
 		sourceLineageTag: condition_key
 		summarizeBy: none
@@ -12,30 +13,38 @@ table dim_condition
 
 		changedProperty = IsHidden
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	column condition_name
+	column 'Condition Name'
 		dataType: string
 		lineageTag: 801f6a6b-2796-46fb-b24c-ffaeaebae403
 		sourceLineageTag: condition_name
 		summarizeBy: none
 		sourceColumn: condition_name
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	column medical_subject_headings
+	column 'Medical Subject Headings'
 		dataType: string
 		lineageTag: 271c7fd9-2cbd-48f1-9b1e-fcd867004aa3
 		sourceLineageTag: medical_subject_headings
 		summarizeBy: none
 		sourceColumn: medical_subject_headings
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	partition dim_condition = entity
+	partition Condition = entity
 		mode: directLake
 		source
 			entityName: dim_condition
 			schemaName: core
 			expressionSource: 'DirectLake - lh_clinical'
+
+	changedProperty = Name
 

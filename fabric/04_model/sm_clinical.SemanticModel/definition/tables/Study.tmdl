@@ -1,10 +1,11 @@
-table dim_study
+table Study
 	lineageTag: 6369be91-60a3-4238-9479-ab05cc471bb7
 	sourceLineageTag: [core].[dim_study]
 
-	column study_key
+	column 'Study Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: 603cdfe0-e15c-43d8-bd41-fbfe36993e71
 		sourceLineageTag: study_key
 		summarizeBy: none
@@ -12,30 +13,38 @@ table dim_study
 
 		changedProperty = IsHidden
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	column study_short_title
+	column 'Study Short Title'
 		dataType: string
 		lineageTag: b0afd651-1357-4663-899f-5755ff7da751
 		sourceLineageTag: study_short_title
 		summarizeBy: none
 		sourceColumn: study_short_title
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	column study_official_title
+	column 'Study Official Title'
 		dataType: string
 		lineageTag: 8139b66b-3648-46e5-afb6-dc9f0d4cdd87
 		sourceLineageTag: study_official_title
 		summarizeBy: none
 		sourceColumn: study_official_title
 
+		changedProperty = Name
+
 		annotation SummarizationSetBy = Automatic
 
-	partition dim_study = entity
+	partition Study = entity
 		mode: directLake
 		source
 			entityName: dim_study
 			schemaName: core
 			expressionSource: 'DirectLake - lh_clinical'
+
+	changedProperty = Name
 

@@ -20,6 +20,27 @@
 # META   }
 # META }
 
+# MARKDOWN ********************
+
+# # Clinical Trials Staging Transformation
+# 
+# ## Objective
+# 
+# This notebook transforms the raw clinical trials dataset into a cleaned staging layer.
+# 
+# Main responsibilities:
+# - standardize null handling
+# - normalize text values
+# - apply business cleaning rules
+# - convert dates into a consistent format
+# - enforce the staging schema
+# 
+# Source table:
+# `raw.clinical_trials`
+# 
+# Target table:
+# `stg.clinical_trials`
+
 # CELL ********************
 
 from pyspark.sql import functions as F
@@ -30,6 +51,30 @@ from pyspark.sql.types import LongType
 # =========================
 
 df_raw = spark.table("raw.clinical_trials")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Data Cleaning and Standardization
+# 
+# This section applies the core staging transformations.
+# 
+# Cleaning rules include:
+# - normalization of empty or invalid text values
+# - trimming and standardizing text fields
+# - datatype enforcement
+# - business-specific corrections
+# - normalization of partial date formats
+# 
+# The goal of the staging layer is to provide a cleaner and more consistent dataset for downstream analytical models.
+
+# CELL ********************
 
 # =========================
 # GENERIC NORMALIZATION FUNCTION
@@ -127,7 +172,26 @@ df_stg = df_stg.withColumn(
     )
 )
 
+# METADATA ********************
 
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Persist Cleaned Dataset into the Staging Layer
+# 
+# The transformed dataset is stored as a managed Delta table in the staging layer.
+# 
+# During development:
+# - the table is recreated on each execution
+# - overwrite/reset operations simplify iterative testing
+# 
+# Finally, basic validation checks confirm successful ingestion.
+
+# CELL ********************
 
 # =========================
 # CREATE STAGING SCHEMA
