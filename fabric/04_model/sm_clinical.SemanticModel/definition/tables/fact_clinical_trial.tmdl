@@ -107,6 +107,33 @@ table fact_clinical_trial
 
 		annotation SummarizationSetBy = Automatic
 
+	column primary_purpose
+		dataType: string
+		lineageTag: 054b1012-8d1b-4b8a-8a7a-c10a15c1285d
+		sourceLineageTag: primary_purpose
+		summarizeBy: none
+		sourceColumn: primary_purpose
+
+		annotation SummarizationSetBy = Automatic
+
+	column standard_age
+		dataType: string
+		lineageTag: ab392454-630a-4f3c-ad61-6cff82c69caf
+		sourceLineageTag: standard_age
+		summarizeBy: none
+		sourceColumn: standard_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column outcome_measure
+		dataType: string
+		lineageTag: 1d6fd73b-c7ad-46ae-b440-6f9d6e1bc054
+		sourceLineageTag: outcome_measure
+		summarizeBy: none
+		sourceColumn: outcome_measure
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_clinical_trial = entity
 		mode: directLake
 		source

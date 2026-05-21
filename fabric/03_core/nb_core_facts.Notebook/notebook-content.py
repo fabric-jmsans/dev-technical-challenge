@@ -162,7 +162,7 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC select * from core.dim_study limit 3
+# MAGIC select * from  core.fact_clinical_trial limit 3
 
 # METADATA ********************
 
