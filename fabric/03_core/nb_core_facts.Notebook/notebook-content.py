@@ -37,7 +37,12 @@
 # MAGIC 
 # MAGIC     overall_status STRING,
 # MAGIC     study_type STRING,
-# MAGIC     phases STRING
+# MAGIC     phases STRING,
+# MAGIC     primary_purpose STRING,
+# MAGIC     standard_age STRING,
+# MAGIC     outcome_measure STRING
+# MAGIC 
+# MAGIC 
 # MAGIC );
 
 # METADATA ********************
@@ -71,14 +76,16 @@
 # MAGIC     SELECT
 # MAGIC         s.kaggle_id AS trial_id,
 # MAGIC         s.start_date,
-# MAGIC 
 # MAGIC         o.organization_key,
 # MAGIC         c.condition_key,
 # MAGIC         i.intervention_key,
 # MAGIC         u.study_key,
 # MAGIC         s.overall_status,
 # MAGIC         s.study_type,
-# MAGIC         s.phases
+# MAGIC         s.phases,
+# MAGIC         s.primary_purpose,
+# MAGIC         s.standard_age,
+# MAGIC         s.outcome_measure
 # MAGIC 
 # MAGIC     FROM stg.clinical_trials s
 # MAGIC 
@@ -125,7 +132,10 @@
 # MAGIC     study_key,
 # MAGIC     overall_status,
 # MAGIC     study_type,
-# MAGIC     phases
+# MAGIC     phases,
+# MAGIC     primary_purpose,
+# MAGIC     standard_age,
+# MAGIC     outcome_measure
 # MAGIC )
 # MAGIC VALUES (
 # MAGIC     s.trial_id,
@@ -136,7 +146,10 @@
 # MAGIC     s.study_key,
 # MAGIC     s.overall_status,
 # MAGIC     s.study_type,
-# MAGIC     s.phases
+# MAGIC     s.phases,
+# MAGIC     s.primary_purpose,
+# MAGIC     s.standard_age,
+# MAGIC     s.outcome_measure
 # MAGIC );
 
 # METADATA ********************
@@ -149,7 +162,7 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC select * from core.dim_study limit 3
+# MAGIC select * from  core.fact_clinical_trial limit 3
 
 # METADATA ********************
 
