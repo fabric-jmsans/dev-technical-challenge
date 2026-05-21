@@ -5,6 +5,7 @@ table Intervention
 	column 'Intervention Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: 5205a9be-db2a-4663-bfe3-5f55becb01bb
 		sourceLineageTag: intervention_key
 		summarizeBy: none

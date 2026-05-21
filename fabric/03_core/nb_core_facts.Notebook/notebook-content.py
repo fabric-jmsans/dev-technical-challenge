@@ -130,6 +130,7 @@
 # MAGIC WHEN NOT MATCHED THEN
 # MAGIC INSERT (
 # MAGIC     trial_id,
+# MAGIC     date_key, 
 # MAGIC     start_date,
 # MAGIC     organization_key,
 # MAGIC     condition_key,
@@ -144,7 +145,8 @@
 # MAGIC )
 # MAGIC VALUES (
 # MAGIC     s.trial_id,
-# MAGIC     s.start_date,
+# MAGIC     YEAR(s.start_date)*10000 + MONTH(s.start_date)*100+ DAY(s.start_date),
+# MAGIC     s.start_date,    
 # MAGIC     s.organization_key,
 # MAGIC     s.condition_key,
 # MAGIC     s.intervention_key,

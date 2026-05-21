@@ -128,8 +128,11 @@
 
 # MAGIC %%sql
 # MAGIC 
+# MAGIC -- DROP TABLE core.dim_date;
+# MAGIC 
 # MAGIC CREATE TABLE IF NOT EXISTS core.dim_date (
-# MAGIC     date_key DATE,
+# MAGIC     date_key INT,
+# MAGIC     date_value DATE,
 # MAGIC     year INT,
 # MAGIC     month INT,
 # MAGIC     month_name STRING,
@@ -172,6 +175,7 @@
 # MAGIC 
 # MAGIC CREATE TABLE IF NOT EXISTS core.fact_clinical_trial (
 # MAGIC     trial_id STRING,
+# MAGIC     date_key INT,
 # MAGIC     start_date DATE,
 # MAGIC 
 # MAGIC     organization_key STRING,

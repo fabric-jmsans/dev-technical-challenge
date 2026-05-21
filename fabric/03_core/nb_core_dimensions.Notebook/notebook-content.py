@@ -196,8 +196,6 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC 
-# MAGIC 
 # MAGIC MERGE INTO core.dim_condition t
 # MAGIC USING (
 # MAGIC     SELECT DISTINCT
@@ -235,8 +233,6 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC 
-# MAGIC 
 # MAGIC MERGE INTO core.dim_intervention t
 # MAGIC USING (
 # MAGIC     SELECT DISTINCT
@@ -273,8 +269,6 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC 
-# MAGIC 
 # MAGIC 
 # MAGIC MERGE INTO core.dim_study t
 # MAGIC USING (
@@ -411,8 +405,20 @@
 # CELL ********************
 
 # MAGIC %%sql
-# MAGIC 
-# MAGIC 
+# MAGIC describe core.dim_date
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark",
+# META   "frozen": true,
+# META   "editable": false
+# META }
+
+# CELL ********************
+
+# MAGIC %%sql
 # MAGIC 
 # MAGIC WITH calendar AS (
 # MAGIC     SELECT explode(
@@ -421,20 +427,21 @@
 # MAGIC             to_date('2024-12-31'),
 # MAGIC             interval 1 day
 # MAGIC         )
-# MAGIC     ) AS date_key
+# MAGIC     ) AS date_value
 # MAGIC )
 # MAGIC 
 # MAGIC INSERT INTO core.dim_date
 # MAGIC SELECT
-# MAGIC     date_key,
-# MAGIC     YEAR(date_key) AS year,
-# MAGIC     MONTH(date_key) AS month,
-# MAGIC     DATE_FORMAT(date_key, 'MMMM') AS month_name,
-# MAGIC     QUARTER(date_key) AS quarter,
-# MAGIC     WEEKOFYEAR(date_key) AS week,
-# MAGIC     DAY(date_key) AS day,
-# MAGIC     DATE_FORMAT(date_key, 'EEEE') AS day_name,
-# MAGIC     CASE WHEN DAYOFWEEK(date_key) IN (1, 7) THEN true ELSE false END AS is_weekend
+# MAGIC     YEAR(date_value)*10000 + MONTH(date_value) *100 + DAY(date_value) AS date_key,
+# MAGIC     date_value AS date_value,
+# MAGIC     YEAR(date_value) AS year,
+# MAGIC     MONTH(date_value) AS month,
+# MAGIC     DATE_FORMAT(date_value, 'MMMM') AS month_name,
+# MAGIC     QUARTER(date_value) AS quarter,
+# MAGIC     WEEKOFYEAR(date_value) AS week,
+# MAGIC     DAY(date_value) AS day,
+# MAGIC     DATE_FORMAT(date_value, 'EEEE') AS day_name,
+# MAGIC     CASE WHEN DAYOFWEEK(date_value) IN (1, 7) THEN true ELSE false END AS is_weekend
 # MAGIC FROM calendar;
 
 

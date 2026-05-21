@@ -4,9 +4,10 @@ table Calendar
 	dataCategory: Time
 
 	column 'Date Key'
-		dataType: dateTime
-		isKey
-		formatString: dd/mm/yyyy
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
 		lineageTag: d7e6fa7b-55b6-4417-9b4e-f719be6d2e83
 		sourceLineageTag: date_key
 		summarizeBy: none
@@ -16,15 +17,11 @@ table Calendar
 
 		changedProperty = FormatString
 
-		changedProperty = DataType
-
 		changedProperty = Name
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = SummarizeBy
 
-		annotation PBI_FormatHint = {"isCustom":true}
-
-		annotation UnderlyingDateTimeDataType = Date
+		annotation SummarizationSetBy = User
 
 	column Year
 		dataType: int64
@@ -56,8 +53,11 @@ table Calendar
 		sourceLineageTag: month_name
 		summarizeBy: none
 		sourceColumn: month_name
+		sortByColumn: Month
 
 		changedProperty = Name
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -115,6 +115,19 @@ table Calendar
 		sourceLineageTag: is_weekend
 		summarizeBy: none
 		sourceColumn: is_weekend
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: 182dc5fe-0377-492e-a17e-6d11150c8f81
+		sourceLineageTag: date_value
+		summarizeBy: none
+		sourceColumn: date_value
 
 		changedProperty = Name
 

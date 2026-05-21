@@ -5,6 +5,7 @@ table Study
 	column 'Study Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: 603cdfe0-e15c-43d8-bd41-fbfe36993e71
 		sourceLineageTag: study_key
 		summarizeBy: none

@@ -10,6 +10,7 @@ table 'Clinical trial'
 
 	column 'Trial Id'
 		dataType: string
+		isNullable: false
 		lineageTag: c7e091ba-eaf6-4d61-8505-0019da1c9f22
 		sourceLineageTag: trial_id
 		summarizeBy: none
@@ -19,9 +20,9 @@ table 'Clinical trial'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Original start date
 	column 'Start Date'
 		dataType: dateTime
-		isHidden
 		formatString: dd/mm/yyyy
 		lineageTag: e7e6706b-b8f0-48db-b15b-0af5e41cca6e
 		sourceLineageTag: start_date
@@ -36,6 +37,8 @@ table 'Clinical trial'
 
 		changedProperty = Name
 
+		changedProperty = Description
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isCustom":true}
@@ -45,6 +48,7 @@ table 'Clinical trial'
 	column 'Organization Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: 9ebaa5ef-0d39-45d3-b7cf-522d46affe8e
 		sourceLineageTag: organization_key
 		summarizeBy: none
@@ -59,6 +63,7 @@ table 'Clinical trial'
 	column 'Condition Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: 975c60cf-6da5-4862-838e-67ef6676e708
 		sourceLineageTag: condition_key
 		summarizeBy: none
@@ -73,6 +78,7 @@ table 'Clinical trial'
 	column 'Intervention Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: d622e6a8-6754-4644-8ecf-b7baa9399dc6
 		sourceLineageTag: intervention_key
 		summarizeBy: none
@@ -120,6 +126,7 @@ table 'Clinical trial'
 	column 'Study Key'
 		dataType: string
 		isHidden
+		isNullable: false
 		lineageTag: b2630e7f-8a57-43b8-b051-62d391ce9fa8
 		sourceLineageTag: study_key
 		summarizeBy: none
@@ -163,6 +170,24 @@ table 'Clinical trial'
 		changedProperty = Name
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'Date Key'
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 86e5b866-0546-4e1d-9113-c9c235427204
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = Name
+
+		changedProperty = SummarizeBy
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	partition 'Clinical trial' = entity
 		mode: directLake
