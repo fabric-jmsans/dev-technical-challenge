@@ -21,10 +21,48 @@
 # META   }
 # META }
 
+# MARKDOWN ********************
+
+# # Clinical Trials Raw Ingestion
+# 
+# ## Objective
+# 
+# This notebook ingests the original clinical trials CSV dataset into the Lakehouse raw layer.
+# 
+# The process:
+# - Reads the source CSV file
+# - Handles multiline quoted text correctly
+# - Standardizes column names for SQL/Lakehouse compatibility
+# - Stores the result as a Delta table
+# 
+# Target table:
+# `raw.clinical_trials`
+
 # CELL ********************
 
 from pyspark.sql import SparkSession
 import re
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Read Source CSV File
+# 
+# The source file contains quoted multiline text fields and requires custom parsing options.
+# 
+# Important parsing configurations:
+# - Header row enabled
+# - Multiline records supported
+# - Quoted text handled correctly
+# - Comma-separated values
+
+# CELL ********************
 
 # Read the CSV file using the required parsing options
 # - header: first row contains column names
@@ -41,6 +79,23 @@ df = (
     .csv("Files/clin_trials.csv")
 )
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Inspect Original Columns
+# 
+# The dataset contains an unnamed first column generated from the original Kaggle export.
+# 
+# This step identifies and prepares the columns before standardization.
+
+# CELL ********************
+
 # Display original column names
 print(df.columns)
 
@@ -52,6 +107,31 @@ original_cols[0] = "kaggle_id"
 # Apply the temporary corrected column names
 # df.toDF(*cols) is equivalent to df.toDF("id", "name", ...)
 df = df.toDF(*original_cols)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Standardize Column Names
+# 
+# Column names are normalized to improve compatibility with:
+# - Lakehouse tables
+# - SQL queries
+# - Delta tables
+# - downstream analytical tools
+# 
+# Transformations applied:
+# - lowercase conversion
+# - invalid character removal
+# - underscore normalization
+# - maximum length enforcement
+
+# CELL ********************
 
 # Function to sanitize column names for Lakehouse / SQL compatibility
 def clean_column_name(col_name):
@@ -75,11 +155,48 @@ clean_cols = [clean_column_name(c) for c in df.columns]
 
 df = df.toDF(*clean_cols)
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Validate DataFrame Structure
+# 
+# Basic validation checks are performed before persisting the dataset:
+# - schema inspection
+# - row count verification
+
+# CELL ********************
+
 # Display final schema
 df.printSchema()
 
 # Count total rows
 print(f"Total rows: {df.count()}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Save Dataset into the Lakehouse
+# 
+# The cleaned dataset is stored as a Delta table in the raw layer.
+# 
+# Write strategy:
+# - Delta format
+# - overwrite mode
+# - managed Lakehouse table
+
+# CELL ********************
 
 # Create staging schema if it does not exist
 # spark.sql("CREATE SCHEMA IF NOT EXISTS raw")
@@ -93,18 +210,6 @@ print(f"Total rows: {df.count()}")
 )
 
 print("Table raw.clinical_trials created successfully")
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# Check distinct IDs because Kaggle IDs may contain duplicates, so distinct count validates uniqueness vs total rows
-print(f"Total distinct rows: {df.select('kaggle_id').distinct().count()}")
 
 # METADATA ********************
 

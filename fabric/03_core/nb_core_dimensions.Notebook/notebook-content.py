@@ -20,103 +20,75 @@
 # META   }
 # META }
 
-# CELL ********************
+# MARKDOWN ********************
 
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_organization (
-# MAGIC     organization_key STRING,
-# MAGIC     organization_full_name STRING,
-# MAGIC     organization_class STRING,
-# MAGIC     responsible_party STRING
-# MAGIC );
+# # Core Dimension Loading
+# 
+# ## Objective
+# 
+# This notebook loads and transforms data from the staging layer into the core dimensional model.
+# 
+# The process:
+# - extracts and standardizes business entities from staging data
+# - applies deterministic business key generation
+# - loads dimension tables using MERGE operations to ensure uniqueness
+# 
+# Source layer:
+# `stg`
+# 
+# Target layer:
+# `core`
+# 
+# During development, dimension tables may be truncated before reload to simplify iterative testing and rapid model changes.
 
-# METADATA ********************
+# MARKDOWN ********************
 
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_condition (
-# MAGIC     condition_key STRING,
-# MAGIC     condition_name STRING,
-# MAGIC     medical_subject_headings STRING
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_intervention (
-# MAGIC     intervention_key STRING,
-# MAGIC     intervention_name STRING,
-# MAGIC     intervention_description STRING
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_date (
-# MAGIC     date_key DATE,
-# MAGIC     year INT,
-# MAGIC     month INT,
-# MAGIC     month_name STRING,
-# MAGIC     quarter INT,
-# MAGIC     week INT,
-# MAGIC     day INT,
-# MAGIC     day_name STRING,
-# MAGIC     is_weekend BOOLEAN
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC 
-# MAGIC CREATE TABLE IF NOT EXISTS core.dim_study (
-# MAGIC     study_key STRING,
-# MAGIC     study_short_title STRING,
-# MAGIC     study_official_title STRING
-# MAGIC );
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
+# ## Development Reset
+# 
+# During development and testing, core tables are truncated before reloading data.
+# 
+# This approach simplifies:
+# - iterative model changes
+# - business rule adjustments
+# - schema evolution
+# - validation of transformation logic
+# 
+# In production environments, tables would normally be maintained incrementally using MERGE operations without full truncation.
 
 # CELL ********************
 
 # MAGIC %%sql
 # MAGIC 
 # MAGIC TRUNCATE TABLE core.dim_organization;
+# MAGIC TRUNCATE TABLE core.dim_condition;
+# MAGIC TRUNCATE TABLE core.dim_intervention;
+# MAGIC TRUNCATE TABLE core.dim_study;
+# MAGIC TRUNCATE TABLE core.dim_date;
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Load Dimension Data
+# 
+# This section populates the dimension tables from the staging layer.
+# 
+# The process:
+# - extracts distinct business entities
+# - standardizes attribute values
+# - generates deterministic business keys
+# - loads new records using MERGE logic
+# 
+# The MERGE strategy supports future incremental loading patterns while preventing duplicate dimension entries.
+
+# CELL ********************
+
+# MAGIC %%sql
 # MAGIC 
 # MAGIC MERGE INTO core.dim_organization t
 # MAGIC USING (
@@ -224,7 +196,7 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_condition;
+# MAGIC 
 # MAGIC 
 # MAGIC MERGE INTO core.dim_condition t
 # MAGIC USING (
@@ -263,7 +235,7 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_intervention;
+# MAGIC 
 # MAGIC 
 # MAGIC MERGE INTO core.dim_intervention t
 # MAGIC USING (
@@ -302,7 +274,7 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_study;
+# MAGIC 
 # MAGIC 
 # MAGIC MERGE INTO core.dim_study t
 # MAGIC USING (
@@ -440,7 +412,7 @@
 
 # MAGIC %%sql
 # MAGIC 
-# MAGIC TRUNCATE TABLE core.dim_date;
+# MAGIC 
 # MAGIC 
 # MAGIC WITH calendar AS (
 # MAGIC     SELECT explode(

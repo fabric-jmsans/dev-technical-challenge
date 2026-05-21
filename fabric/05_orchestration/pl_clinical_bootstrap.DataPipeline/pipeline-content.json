@@ -4,7 +4,7 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "43ab94b1-2f9e-a3f5-4a4f-eb5036e30107",
+          "notebookId": "888c6a89-0fc6-bb0f-4eb9-d11d68abb154",
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "sessionTag": "Testsession"
         },
@@ -15,7 +15,7 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "setup schemas",
+        "name": "general setup",
         "dependsOn": []
       },
       {
@@ -35,7 +35,7 @@
         "name": "raw ingestion",
         "dependsOn": [
           {
-            "activity": "setup schemas",
+            "activity": "general setup",
             "dependencyConditions": [
               "Succeeded"
             ]
