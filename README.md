@@ -344,14 +344,34 @@ Microsoft Fabric provides strong foundations for scaling these workloads.
 
 # Monitoring & Observability
 
-Future production-ready improvements could include:
+Microsoft Fabric already provides built-in monitoring capabilities for pipelines, notebook executions, semantic model refreshes, and dataflows.  
+For this challenge, monitoring and operational visibility were validated using the native Fabric monitoring experience, including execution history, duration tracking, and failure diagnostics.
 
-- Pipeline monitoring
-- Data quality dashboards
-- Failure alerting
-- SLA monitoring
-- Centralized logging
-- Execution metrics
+The solution can be further enhanced with production-oriented observability practices such as:
+
+- Centralized monitoring of pipeline and notebook executions
+- Data quality validation dashboards
+- Automated failure alerting and notifications
+- SLA and execution time monitoring
+- Centralized logging and audit tracking
+- Historical execution metrics and trend analysis
+- Refresh and dependency monitoring across workloads
+
+Additionally, screenshots of the latest successful and failed executions were included to demonstrate operational traceability, execution monitoring, and troubleshooting capabilities available within Microsoft Fabric.
+
+<img width="1685" height="1039" alt="image" src="https://github.com/user-attachments/assets/cbb365c0-9eec-468d-9dac-75afe21c6a3c" />
+
+
+## Execution Monitoring Examples
+
+> Add here screenshots of:
+>
+> - Latest successful pipeline executions
+> - Failed executions and error details
+> - Notebook execution history
+> - Pipeline duration and execution metrics
+> - Fabric monitoring dashboard
+> - Refresh history and operational logs
 
 ---
 
