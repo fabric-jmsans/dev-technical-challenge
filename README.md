@@ -63,6 +63,9 @@ The solution follows a layered medallion-style architecture implemented inside M
 
 ---
 
+<img width="1952" height="537" alt="image" src="https://github.com/user-attachments/assets/2871d9c2-6575-4b85-8a94-cbce54320332" />
+
+
 # Project Structure
 
 ```text
