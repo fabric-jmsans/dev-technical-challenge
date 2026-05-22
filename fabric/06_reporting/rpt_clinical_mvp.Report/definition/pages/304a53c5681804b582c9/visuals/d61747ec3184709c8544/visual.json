@@ -1,39 +1,34 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "c7e966548cbc774e850a",
+  "name": "d61747ec3184709c8544",
   "position": {
-    "x": 68.800310097551531,
-    "y": 12.852805183059075,
-    "z": 1000,
-    "height": 179.93927256282706,
-    "width": 486.13845486511684,
-    "tabOrder": 1000
+    "x": 32,
+    "y": 264,
+    "z": 2002,
+    "height": 424.00000000000006,
+    "width": 576,
+    "tabOrder": 2002
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Clinical trial"
+                      "Entity": "Study"
                     }
                   },
-                  "Property": "Study Type"
+                  "Property": "Study Short Title"
                 }
               },
-              "queryRef": "Clinical trial.Study Type",
-              "nativeQueryRef": "Study Type",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "queryRef": "Study.Study Short Title",
+              "nativeQueryRef": "Study Short Title"
+            },
             {
               "field": {
                 "Measure": {
@@ -46,7 +41,7 @@
                 }
               },
               "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials1"
+              "nativeQueryRef": "Number of trials"
             }
           ]
         }
@@ -66,42 +61,29 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
-      "categoryAxis": [
+      "columnWidth": [
         {
           "properties": {
-            "innerPadding": {
+            "value": {
               "expr": {
                 "Literal": {
-                  "Value": "30L"
+                  "Value": "422.85242004668663D"
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "Study.Study Short Title"
           }
         }
       ],
-      "labels": [
+      "columnHeaders": [
         {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          }
+          "properties": {}
         }
       ]
     },
@@ -146,5 +128,71 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "29e43442bdad45095424",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Study"
+              }
+            },
+            "Property": "Study Short Title"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "82c5e6d31e34b7cf5871",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Clinical trial"
+              }
+            },
+            "Property": "Number of trials"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "c",
+              "Entity": "Clinical trial",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 2,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "c"
+                        }
+                      },
+                      "Property": "Number of trials"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "3L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

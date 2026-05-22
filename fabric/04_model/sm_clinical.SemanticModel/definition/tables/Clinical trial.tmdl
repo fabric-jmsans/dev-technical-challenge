@@ -9,8 +9,9 @@ table 'Clinical trial'
 		changedProperty = Name
 
 	column 'Trial Id'
-		dataType: string
+		dataType: int64
 		isNullable: false
+		formatString: 0
 		lineageTag: c7e091ba-eaf6-4d61-8505-0019da1c9f22
 		sourceLineageTag: trial_id
 		summarizeBy: none
@@ -18,7 +19,11 @@ table 'Clinical trial'
 
 		changedProperty = Name
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = DataType
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
 
 	/// Original start date
 	column 'Start Date'
