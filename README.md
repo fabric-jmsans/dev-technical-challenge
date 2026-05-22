@@ -361,18 +361,6 @@ Additionally, screenshots of the latest successful and failed executions were in
 
 <img width="1685" height="1039" alt="image" src="https://github.com/user-attachments/assets/cbb365c0-9eec-468d-9dac-75afe21c6a3c" />
 
-
-## Execution Monitoring Examples
-
-> Add here screenshots of:
->
-> - Latest successful pipeline executions
-> - Failed executions and error details
-> - Notebook execution history
-> - Pipeline duration and execution metrics
-> - Fabric monitoring dashboard
-> - Refresh history and operational logs
-
 ---
 
 # Security Considerations
