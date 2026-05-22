@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "a8ed4689a429a4ef5b78",
+  "position": {
+    "x": 0,
+    "y": 64,
+    "z": 1003,
+    "height": 128,
+    "width": 192,
+    "tabOrder": 1003
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clinical trial"
+                    }
+                  },
+                  "Property": "Number of trials"
+                }
+              },
+              "queryRef": "Clinical trial.Number of trials",
+              "nativeQueryRef": "Number of trials",
+              "format": "#,0"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Clinical trial"
+                  }
+                },
+                "Property": "Number of trials"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Clinical trial.Number of trials"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

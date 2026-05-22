@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "rpt_cardinality_study"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cb6d552d-6107-8c52-4f39-1914f0edb5d9"
+  }
+}
