@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "rpt_clinical_study_mvp"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8f849b9e-4529-912a-4cdb-e325b03147b2"
+  }
+}

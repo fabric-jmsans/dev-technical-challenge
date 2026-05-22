@@ -18,4 +18,5 @@ ref table Condition
 ref table Organization
 ref table Calendar
 ref table Study
+ref table 'Attributes group'
 

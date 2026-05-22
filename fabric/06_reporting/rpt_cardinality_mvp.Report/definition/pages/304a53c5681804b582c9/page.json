@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "304a53c5681804b582c9",
+  "displayName": "Clinical trials",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

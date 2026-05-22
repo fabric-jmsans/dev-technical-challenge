@@ -1,0 +1,63 @@
+table 'Attributes group'
+	lineageTag: e26f2b48-b2fe-4a14-bbf5-77582b61a577
+
+	column 'Trial Analysis Attributes'
+		lineageTag: 546cab98-ce7c-41cc-ab19-56891cc020dc
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Concepts Orden'
+
+		relatedColumnDetails
+			groupByColumn: 'Concepts Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Concepts Campos'
+		isHidden
+		lineageTag: 5fa0fe4f-9ec1-49be-8fab-37935a3167db
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Concepts Orden'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Concepts Orden'
+		isHidden
+		formatString: 0
+		lineageTag: 536a2c00-dcbf-4a2a-b892-0a667c8ad987
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Attributes group' = calculated
+		mode: import
+		source = ```
+				{
+				    ("Phases", NAMEOF('Clinical trial'[Phases]), 0),
+				    ("Primary Purpose", NAMEOF('Clinical trial'[Primary Purpose]), 1),
+				    ("Overall Status", NAMEOF('Clinical trial'[Overall Status]), 2),
+				    ("Outcome Measure", NAMEOF('Clinical trial'[Outcome Measure]), 3),
+				    ("Standard Age", NAMEOF('Clinical trial'[Standard Age]), 4),
+				    ("Study Type", NAMEOF('Clinical trial'[Study Type]), 5),
+				    ("Condition Name", NAMEOF('Condition'[Condition Name]), 6),
+				    ("Medical Subject Headings", NAMEOF('Condition'[Medical Subject Headings]), 7),
+				    ("Intervention Description", NAMEOF('Intervention'[Intervention Description]), 8),
+				    ("Intervention Name", NAMEOF('Intervention'[Intervention Name]), 9),
+				    ("Organization Full Name", NAMEOF('Organization'[Organization Full Name]), 10),
+				    ("Responsible Party", NAMEOF('Organization'[Responsible Party]), 11),
+				    ("Organization Class", NAMEOF('Organization'[Organization Class]), 12),
+				    ("Study Official Title", NAMEOF('Study'[Study Official Title]), 13),
+				    ("Study Short Title", NAMEOF('Study'[Study Short Title]), 14),
+				    ("Start Date", NAMEOF('Clinical trial'[Start Date]), 15)    
+				}
+				```
+
+	annotation PBI_Id = a49f2f75d3bc4ded862122b2edb2fd17
+

@@ -3,10 +3,12 @@ table 'Clinical trial'
 	sourceLineageTag: [core].[fact_clinical_trial]
 
 	measure 'Number of trials' = COUNTROWS('Clinical trial')
-		formatString: 0
+		formatString: #,0
 		lineageTag: 551a35e3-9b44-4110-b8c7-433fb0f0259f
 
 		changedProperty = Name
+
+		changedProperty = FormatString
 
 	column 'Trial Id'
 		dataType: int64
