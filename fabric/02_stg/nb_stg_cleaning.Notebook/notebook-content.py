@@ -47,6 +47,7 @@
 
 # CELL ********************
 
+from pyspark.sql import Window
 from pyspark.sql import functions as F
 from pyspark.sql.types import LongType
 
@@ -55,6 +56,53 @@ from pyspark.sql.types import LongType
 # =========================
 
 df_raw = spark.table("raw.clinical_trials")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## Removing duplicates
+
+# CELL ********************
+
+# All columns except ID
+cols = [c for c in df_raw.columns if c != "kaggle_id"]
+
+print (cols)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+w = Window.partitionBy(*cols).orderBy("kaggle_id")
+
+df_distincts = (
+    df_raw
+    .withColumn("rn", F.row_number().over(w))
+    .filter(F.col("rn") == 1)
+    .drop("rn")
+)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+display(df_distincts.limit(10))
 
 # METADATA ********************
 
@@ -111,7 +159,7 @@ def normalize_text(col_name):
 # =========================
 
 df_stg = (
-    df_raw
+    df_distincts
     .withColumn("kaggle_id", F.col("kaggle_id").cast(LongType()))
     .withColumn("organization_full_name", normalize_text("organization_full_name"))
     .withColumn("organization_class", normalize_text("organization_class"))
