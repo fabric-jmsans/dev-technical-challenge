@@ -1,0 +1,3 @@
+dependencies:
+  - pip:
+      - kaggle==2.1.2

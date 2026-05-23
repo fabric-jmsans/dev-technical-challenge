@@ -15,8 +15,16 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "general setup",
-        "dependsOn": []
+        "name": "create tables",
+        "description": "create schemas and empty tables",
+        "dependsOn": [
+          {
+            "activity": "Load file in datelake",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       },
       {
         "type": "TridentNotebook",
@@ -35,7 +43,7 @@
         "name": "raw ingestion",
         "dependsOn": [
           {
-            "activity": "general setup",
+            "activity": "create tables",
             "dependencyConditions": [
               "Succeeded"
             ]
@@ -113,6 +121,24 @@
             ]
           }
         ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "2b11e720-d32c-9a29-48b0-7ae5ebfb7ee6",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "sessionTag": "Testsession"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Load file in datelake",
+        "description": "Load a file using Kaggle API",
+        "dependsOn": []
       }
     ]
   }
