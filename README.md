@@ -73,7 +73,8 @@ fabric/
 │
 ├── 00_admin/
 │   ├── lh_clinical.Lakehouse
-│   └── nb_setup_schemas.Notebook
+│   ├── nb_setup_schemas.Notebook
+│   └── nb_kaggle_ingest
 │
 ├── 01_raw/
 │   └── nb_raw_ingestion.Notebook
@@ -124,10 +125,28 @@ This notebook initializes the environment and prepares the required schemas and 
 
 Responsibilities include:
 
-- Schema creation
-- Environment initialization
-- Table setup
-- Base configuration logic
+- Schema creation  
+- Environment initialization  
+- Table setup  
+- Base configuration logic  
+
+---
+
+## Data Ingestion (Kaggle API)
+
+### `nb_kaggle_ingest.Notebook`
+
+The project now automates the ingestion of the source dataset using the :contentReference[oaicite:0]{index=0} API instead of manual CSV uploads.
+
+Responsibilities:
+
+- Download CSV from Kaggle to datalake via API
+
+A Kaggle API token is securely stored in the Data Lake and used by a dedicated notebook to authenticate and download the dataset programmatically.
+
+To enable this process in Microsoft Fabric, the required Kaggle Python libraries have been installed in a dedicated execution environment, and the notebooks are configured to run using this environment.
+
+The downloaded dataset is written directly into the Lakehouse `Files` area, replacing the previous manual ingestion step.
 
 ---
 
@@ -141,7 +160,7 @@ This notebook handles ingestion of clinical trial datasets into the raw layer.
 
 Responsibilities:
 
-- Load CSV/API source data
+- Load CSV from datalake
 - Preserve original structure
 - Minimal transformation
 - Initial metadata capture
