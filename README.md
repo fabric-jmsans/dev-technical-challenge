@@ -74,7 +74,7 @@ fabric/
 ├── 00_admin/
 │   ├── lh_clinical.Lakehouse
 │   ├── nb_setup_schemas.Notebook
-│   └── nb_kaggle_ingest
+│   └── nb_kaggle_ingest.Notebook
 │
 ├── 01_raw/
 │   └── nb_raw_ingestion.Notebook
