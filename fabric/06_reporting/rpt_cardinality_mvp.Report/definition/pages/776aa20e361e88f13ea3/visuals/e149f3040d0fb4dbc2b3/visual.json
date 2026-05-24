@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "e149f3040d0fb4dbc2b3",
   "position": {
-    "x": 596.521369966683,
-    "y": 262.348435207147,
+    "x": 596.59451659451656,
+    "y": 262.2799422799423,
     "z": 1000,
-    "height": 224.54606702167916,
-    "width": 458.92074977157995,
+    "height": 225.33910533910534,
+    "width": 670.47619047619048,
     "tabOrder": 1000
   },
   "visual": {
@@ -39,14 +39,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Clinical trial"
+                      "Entity": "⠀Measures"
                     }
                   },
                   "Property": "Number of trials"
                 }
               },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials1"
+              "queryRef": "⠀Measures.Number of trials",
+              "nativeQueryRef": "Number of trials"
             }
           ]
         }
@@ -58,7 +58,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Clinical trial"
+                    "Entity": "⠀Measures"
                   }
                 },
                 "Property": "Number of trials"
@@ -146,5 +146,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "eecfda238285d7d63756",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Clinical trial"
+              }
+            },
+            "Property": "Phases"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5d4090f2c605f594f257",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "⠀Measures"
+              }
+            },
+            "Property": "Number of trials"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

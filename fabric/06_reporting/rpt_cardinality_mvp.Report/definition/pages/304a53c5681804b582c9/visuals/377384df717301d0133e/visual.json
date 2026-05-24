@@ -28,20 +28,6 @@
               },
               "queryRef": "Study.Study Official Title",
               "nativeQueryRef": "Study Official Title"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Clinical trial"
-                    }
-                  },
-                  "Property": "Number of trials"
-                }
-              },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials"
             }
           ]
         }
@@ -50,16 +36,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Clinical trial"
+                    "Entity": "Study"
                   }
                 },
-                "Property": "Number of trials"
+                "Property": "Study Official Title"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -131,20 +117,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "317c16b5b0ff1fc2282e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Clinical trial"
-              }
-            },
-            "Property": "Number of trials"
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "4ac213190432cee750ba",
         "field": {

@@ -28,20 +28,6 @@
               },
               "queryRef": "Intervention.Intervention Description",
               "nativeQueryRef": "Intervention Description"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Clinical trial"
-                    }
-                  },
-                  "Property": "Number of trials"
-                }
-              },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials1"
             }
           ]
         }
@@ -95,5 +81,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "73401b52394647880517",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Intervention"
+              }
+            },
+            "Property": "Intervention Description"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

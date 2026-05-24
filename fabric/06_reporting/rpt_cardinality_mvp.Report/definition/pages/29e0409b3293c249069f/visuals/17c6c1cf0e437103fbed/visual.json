@@ -48,22 +48,7 @@
           ]
         },
         "Values": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Clinical trial"
-                    }
-                  },
-                  "Property": "Number of trials"
-                }
-              },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials1"
-            }
-          ]
+          "projections": []
         }
       },
       "sortDefinition": {
@@ -149,5 +134,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e0afe0636f86f0feb22b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Study"
+              }
+            },
+            "Property": "Study Short Title"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "275d44ceaa8bad215331",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Study"
+              }
+            },
+            "Property": "Study Official Title"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -28,40 +28,9 @@
               },
               "queryRef": "Study.Study Short Title",
               "nativeQueryRef": "Study Short Title"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Clinical trial"
-                    }
-                  },
-                  "Property": "Number of trials"
-                }
-              },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Clinical trial"
-                  }
-                },
-                "Property": "Number of trials"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -144,54 +113,6 @@
           }
         },
         "type": "Categorical"
-      },
-      {
-        "name": "82c5e6d31e34b7cf5871",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Clinical trial"
-              }
-            },
-            "Property": "Number of trials"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "c",
-              "Entity": "Clinical trial",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 2,
-                  "Left": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "c"
-                        }
-                      },
-                      "Property": "Number of trials"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "3L"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
       }
     ]
   }

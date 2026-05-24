@@ -39,14 +39,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Clinical trial"
+                      "Entity": "⠀Measures"
                     }
                   },
                   "Property": "Number of trials"
                 }
               },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials1"
+              "queryRef": "⠀Measures.Number of trials",
+              "nativeQueryRef": "Number of trials"
             }
           ]
         }
@@ -58,7 +58,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Clinical trial"
+                    "Entity": "⠀Measures"
                   }
                 },
                 "Property": "Number of trials"
@@ -146,5 +146,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "242abc166352104d7d85",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Clinical trial"
+              }
+            },
+            "Property": "Standard Age"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f25f63fc9e7b2c62bc53",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "⠀Measures"
+              }
+            },
+            "Property": "Number of trials"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

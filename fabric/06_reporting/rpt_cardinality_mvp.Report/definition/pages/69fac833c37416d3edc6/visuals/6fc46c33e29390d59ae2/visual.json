@@ -28,20 +28,6 @@
               },
               "queryRef": "Organization.Organization Full Name",
               "nativeQueryRef": "Organization Full Name"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Clinical trial"
-                    }
-                  },
-                  "Property": "Number of trials"
-                }
-              },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials1"
             }
           ]
         }
@@ -95,5 +81,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d66ed362ebbff985417a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Organization"
+              }
+            },
+            "Property": "Organization Full Name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
