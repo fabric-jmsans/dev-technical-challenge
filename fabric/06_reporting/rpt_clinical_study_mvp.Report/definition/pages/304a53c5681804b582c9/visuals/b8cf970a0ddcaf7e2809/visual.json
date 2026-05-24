@@ -3,10 +3,10 @@
   "name": "b8cf970a0ddcaf7e2809",
   "position": {
     "x": 0,
-    "y": 64,
+    "y": 63.75,
     "z": 1000,
-    "height": 656,
-    "width": 239.99999999999997,
+    "height": 656.25,
+    "width": 217.5,
     "tabOrder": 1000
   },
   "visual": {
@@ -20,275 +20,233 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Clinical trial"
+                      "Entity": "⠀Measures"
                     }
                   },
                   "Property": "Number of trials"
                 }
               },
-              "queryRef": "Clinical trial.Number of trials",
-              "nativeQueryRef": "Number of trials",
+              "queryRef": "⠀Measures.Number of trials",
+              "nativeQueryRef": "Number of trials1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
+                    }
+                  },
+                  "Property": "Short Title Count v2"
+                }
+              },
+              "queryRef": "⠀Measures.Short Title Count v2",
+              "nativeQueryRef": "Short Title Count",
+              "displayName": "Short Title Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Study"
-                        }
-                      },
-                      "Property": "Study Short Title"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Official Title Count"
                 }
               },
-              "queryRef": "Min(Study.Study Short Title)",
-              "nativeQueryRef": "Recuento de Study Short Title",
+              "queryRef": "⠀Measures.Official Title Count",
+              "nativeQueryRef": "Official Title Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Study"
-                        }
-                      },
-                      "Property": "Study Official Title"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Outcome Measure Count"
                 }
               },
-              "queryRef": "Min(Study.Study Official Title)",
-              "nativeQueryRef": "Recuento de Study Official Title",
+              "queryRef": "⠀Measures.Outcome Measure Count",
+              "nativeQueryRef": "Outcome Measure Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Clinical trial"
-                        }
-                      },
-                      "Property": "Outcome Measure"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Intervention Description Count"
                 }
               },
-              "queryRef": "Min(Clinical trial.Outcome Measure)",
-              "nativeQueryRef": "Recuento de Outcome Measure",
+              "queryRef": "⠀Measures.Intervention Description Count",
+              "nativeQueryRef": "Intervention Description Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Intervention"
-                        }
-                      },
-                      "Property": "Intervention Description"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Intervention Name Count"
                 }
               },
-              "queryRef": "Min(Intervention.Intervention Description)",
-              "nativeQueryRef": "Recuento de Intervention Description",
+              "queryRef": "⠀Measures.Intervention Name Count",
+              "nativeQueryRef": "Intervention Name Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Intervention"
-                        }
-                      },
-                      "Property": "Intervention Name"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Condition Name Count"
                 }
               },
-              "queryRef": "Min(Intervention.Intervention Name)",
-              "nativeQueryRef": "Recuento de Intervention Name",
+              "queryRef": "⠀Measures.Condition Name Count",
+              "nativeQueryRef": "Condition Name Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Organization"
-                        }
-                      },
-                      "Property": "Organization Full Name"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Medical Subject Headings Name Count"
                 }
               },
-              "queryRef": "Min(Organization.Organization Full Name)",
-              "nativeQueryRef": "Recuento de Organization Full Name",
+              "queryRef": "⠀Measures.Medical Subject Headings Name Count",
+              "nativeQueryRef": "Medical Subject Headings Name Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Clinical trial"
-                        }
-                      },
-                      "Property": "Overall Status"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Organization Full Name Count"
                 }
               },
-              "queryRef": "Min(Clinical trial.Overall Status)",
-              "nativeQueryRef": "Recuento de Overall Status",
+              "queryRef": "⠀Measures.Organization Full Name Count",
+              "nativeQueryRef": "Organization Full Name Count",
               "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Clinical trial"
-                        }
-                      },
-                      "Property": "Primary Purpose"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Overall Status Count"
                 }
               },
-              "queryRef": "Min(Clinical trial.Primary Purpose)",
-              "nativeQueryRef": "Recuento de Primary Purpose",
-              "format": "#,0"
+              "queryRef": "⠀Measures.Overall Status Count",
+              "nativeQueryRef": "Overall Status Count"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Clinical trial"
-                        }
-                      },
-                      "Property": "Phases"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Primary Purpose Count"
                 }
               },
-              "queryRef": "Min(Clinical trial.Phases)",
-              "nativeQueryRef": "Recuento de Phases",
-              "format": "#,0"
+              "queryRef": "⠀Measures.Primary Purpose Count",
+              "nativeQueryRef": "Primary Purpose Count"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Organization"
-                        }
-                      },
-                      "Property": "Organization Class"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Phases Count"
                 }
               },
-              "queryRef": "Min(Organization.Organization Class)",
-              "nativeQueryRef": "Recuento de Organization Class",
-              "format": "#,0"
+              "queryRef": "⠀Measures.Phases Count",
+              "nativeQueryRef": "Phases Count"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Clinical trial"
-                        }
-                      },
-                      "Property": "Standard Age"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Organization Class Count"
                 }
               },
-              "queryRef": "Min(Clinical trial.Standard Age)",
-              "nativeQueryRef": "Recuento de Standard Age",
-              "format": "#,0"
+              "queryRef": "⠀Measures.Organization Class Count",
+              "nativeQueryRef": "Organization Class Count"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Clinical trial"
-                        }
-                      },
-                      "Property": "Study Type"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Standard Age Count"
                 }
               },
-              "queryRef": "Min(Clinical trial.Study Type)",
-              "nativeQueryRef": "Recuento de Study Type",
-              "format": "#,0"
+              "queryRef": "⠀Measures.Standard Age Count",
+              "nativeQueryRef": "Standard Age Count"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Organization"
-                        }
-                      },
-                      "Property": "Responsible Party"
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
                     }
                   },
-                  "Function": 2
+                  "Property": "Organization Responsible Party Count"
                 }
               },
-              "queryRef": "Min(Organization.Responsible Party)",
-              "nativeQueryRef": "Recuento de Responsible Party",
-              "format": "#,0"
+              "queryRef": "⠀Measures.Organization Responsible Party Count",
+              "nativeQueryRef": "Organization Responsible Party Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
+                    }
+                  },
+                  "Property": "Study Type Count"
+                }
+              },
+              "queryRef": "⠀Measures.Study Type Count",
+              "nativeQueryRef": "Study Type Count"
             }
           ]
         }
@@ -300,7 +258,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Clinical trial"
+                    "Entity": "⠀Measures"
                   }
                 },
                 "Property": "Number of trials"
@@ -339,7 +297,7 @@
             }
           },
           "selector": {
-            "metadata": "Clinical trial.Number of trials"
+            "metadata": "⠀Measures.Number of trials"
           }
         },
         {
@@ -353,7 +311,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Study.Study Short Title)"
+            "metadata": "⠀Measures.Official Title Count"
           }
         },
         {
@@ -367,7 +325,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Clinical trial.Phases)"
+            "metadata": "⠀Measures.Short Title Count v2"
           }
         },
         {
@@ -381,7 +339,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Clinical trial.Standard Age)"
+            "metadata": "⠀Measures.Outcome Measure Count"
           }
         },
         {
@@ -395,7 +353,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Intervention.Intervention Description)"
+            "metadata": "⠀Measures.Intervention Description Count"
           }
         },
         {
@@ -409,7 +367,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Clinical trial.Primary Purpose)"
+            "metadata": "⠀Measures.Intervention Name Count"
           }
         },
         {
@@ -423,7 +381,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Clinical trial.Study Type)"
+            "metadata": "⠀Measures.Organization Full Name Count"
           }
         },
         {
@@ -437,7 +395,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Intervention.Intervention Name)"
+            "metadata": "⠀Measures.Medical Subject Headings Name Count"
           }
         },
         {
@@ -451,77 +409,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(Study.Study Official Title)"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Min(Organization.Organization Class)"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Min(Organization.Organization Full Name)"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Min(Organization.Responsible Party)"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Min(Clinical trial.Overall Status)"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Min(Clinical trial.Outcome Measure)"
+            "metadata": "⠀Measures.Condition Name Count"
           }
         }
       ],
@@ -615,7 +503,7 @@
             "maxTiles": {
               "expr": {
                 "Literal": {
-                  "Value": "14L"
+                  "Value": "12L"
                 }
               }
             },
@@ -686,6 +574,48 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Distinct Values Count'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
           }
         }
       ]

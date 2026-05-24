@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["DirectLake - lh_clinical"]
+annotation PBI_QueryOrder = ["DirectLake - lh_clinical","⠀Measures"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -19,4 +19,5 @@ ref table Organization
 ref table Calendar
 ref table Study
 ref table 'Attributes group'
+ref table ⠀Measures
 

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "78fab266140b1b219cb9",
+  "position": {
+    "x": 217.5,
+    "y": 473.75,
+    "z": 5001,
+    "height": 246.25,
+    "width": 606.25,
+    "tabOrder": 5001
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
+                    }
+                  },
+                  "Property": "Number of trials"
+                }
+              },
+              "queryRef": "⠀Measures.Number of trials",
+              "nativeQueryRef": "Trials Count",
+              "displayName": "Trials Count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clinical trial"
+                    }
+                  },
+                  "Property": "Phases"
+                }
+              },
+              "queryRef": "Clinical trial.Phases",
+              "nativeQueryRef": "Phases",
+              "displayName": "Phases"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Attributes group"
+                    }
+                  },
+                  "Property": "Trial Analysis Attributes"
+                }
+              },
+              "index": 1,
+              "length": 1
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "⠀Measures"
+                  }
+                },
+                "Property": "Number of trials"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "⠀Measures.Number of trials"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "500.74999454576687D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Organization.Organization Full Name"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
