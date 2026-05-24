@@ -27,20 +27,7 @@
 
 # MARKDOWN ********************
 
-# # Kaggle Dataset Ingestion
-# Installs the Kaggle library for the session, loads credentials from `kaggle_secrets.py`, and downloads a dataset.
-# 
-# > **Prerequisites:**  
-# > - `kaggle_secrets.py` must exist in the same folder as this notebook (and be listed in `.gitignore`)  
-# > - Your Fabric workspace must have access to that file (e.g. committed to the repo without secrets, or mounted separately)
-
-# MARKDOWN ********************
-
-# ## 1 — Install Kaggle (session-scoped)
-
-# MARKDOWN ********************
-
-# # %pip install kaggle --quiet
+# ## 1 — Install Kaggle (on a custom Environment)
 
 # MARKDOWN ********************
 
@@ -52,8 +39,6 @@ import os
 import sys
 
 # ── Locate the secrets file ──────────────────────────────────────────────────
-# Fabric notebooks run from the repo root; adjust the path if needed.
-#SECRETS_PATH = os.path.join(os.path.dirname(os.path.abspath('__file__')), 'kaggle_secrets.py')
 SECRETS_PATH = "/lakehouse/default/Files/kaggle_secrets.py"
 
 if not os.path.exists(SECRETS_PATH):
