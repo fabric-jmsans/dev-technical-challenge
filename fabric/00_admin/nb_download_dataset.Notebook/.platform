@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Environment",
-    "displayName": "ev_kaggle_libs",
-    "description": "Environment"
+    "type": "Notebook",
+    "displayName": "nb_download_dataset",
+    "description": "Download dataset via Kaggle API"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "56cd7efa-19af-810a-481c-642e63e02af5"
+    "logicalId": "b9424837-da66-9bd5-462a-b4f3fc661802"
   }
 }

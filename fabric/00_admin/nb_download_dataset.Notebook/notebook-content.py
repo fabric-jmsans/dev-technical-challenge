@@ -18,20 +18,15 @@
 # META       ]
 # META     },
 # META     "environment": {
-# META       "environmentId": "56cd7efa-19af-810a-481c-642e63e02af5",
+# META       "environmentId": "ded45eef-c2ae-b335-4b59-d5f15503cc91",
 # META       "workspaceId": "00000000-0000-0000-0000-000000000000"
-# META     },
-# META     "warehouse": {}
+# META     }
 # META   }
 # META }
 
 # MARKDOWN ********************
 
-# ## 1 — Install Kaggle (on a custom Environment)
-
-# MARKDOWN ********************
-
-# ## 2 — Load credentials and configure the Kaggle client
+# ## 1 — Load credentials and configure the Kaggle client
 
 # CELL ********************
 
@@ -70,15 +65,11 @@ print('✅ Kaggle credentials loaded.')
 
 # CELL ********************
 
-
-
 import kaggle
 
-
-# ── Configuration ────────────────────────────────────────────────────────────
-# Format: 'owner/dataset-slug'  (copy from the Kaggle dataset URL)
-DATASET      = 'danielansted/clinicaltrials-gov-clinical-trials-dataset'   # 👈 change this
-DOWNLOAD_DIR = '/lakehouse/default/Files'     # local staging area inside the Fabric session
+# Format: 'owner/dataset-slug'
+DATASET      = 'danielansted/clinicaltrials-gov-clinical-trials-dataset'
+DOWNLOAD_DIR = '/lakehouse/default/Files'  # local staging area inside the Fabric session
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
@@ -89,7 +80,7 @@ kaggle.api.dataset_download_files(
     unzip=True
 )
 
-print(f'✅ Dataset downloaded to {DOWNLOAD_DIR}')
+print(f'Dataset downloaded to {DOWNLOAD_DIR}')
 print('Files:', os.listdir(DOWNLOAD_DIR))
 
 # METADATA ********************

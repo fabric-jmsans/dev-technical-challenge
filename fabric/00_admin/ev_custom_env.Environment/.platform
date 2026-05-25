@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Environment",
+    "displayName": "ev_custom_env",
+    "description": "Environment to load Kaggle and subtitute starter pool, because preoblems with F4"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ded45eef-c2ae-b335-4b59-d5f15503cc91"
+  }
+}
