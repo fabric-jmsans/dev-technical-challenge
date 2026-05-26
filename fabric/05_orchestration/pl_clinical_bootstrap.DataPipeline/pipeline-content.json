@@ -29,8 +29,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "8e7266a5-309b-4120-86d7-eedd24f6a65a",
-          "workspaceId": "0a207e52-568d-442c-a669-d39849fb8cc5",
+          "notebookId": "24f6a65a-eedd-86d7-4120-309b8e7266a5",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "sessionTag": "Testsession"
         },
         "policy": {
@@ -41,8 +41,6 @@
           "secureOutput": false
         },
         "name": "raw ingestion",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "create tables",
@@ -55,8 +53,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "dd2349d6-ef8d-495c-95f4-32a66db60919",
-          "workspaceId": "0a207e52-568d-442c-a669-d39849fb8cc5",
+          "notebookId": "6db60919-32a6-95f4-495c-ef8ddd2349d6",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "sessionTag": "Testsession"
         },
         "policy": {
@@ -67,8 +65,6 @@
           "secureOutput": false
         },
         "name": "cleaning",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "raw ingestion",
@@ -81,8 +77,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "4efaa991-31f9-49dd-ad11-590ae184b7ff",
-          "workspaceId": "0a207e52-568d-442c-a669-d39849fb8cc5",
+          "notebookId": "e184b7ff-590a-ad11-49dd-31f94efaa991",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "sessionTag": "Testsession"
         },
         "policy": {
@@ -93,8 +89,6 @@
           "secureOutput": false
         },
         "name": "build dimensions",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "cleaning",
@@ -107,8 +101,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "a86bdb20-e194-4b73-b188-de27eac284fb",
-          "workspaceId": "0a207e52-568d-442c-a669-d39849fb8cc5",
+          "notebookId": "eac284fb-de27-b188-4b73-e194a86bdb20",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "sessionTag": "Testsession"
         },
         "policy": {
@@ -119,8 +113,6 @@
           "secureOutput": false
         },
         "name": "build fact tables",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "build dimensions",
@@ -133,8 +125,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "fc661802-b4f3-462a-9bd5-da66b9424837",
-          "workspaceId": "0a207e52-568d-442c-a669-d39849fb8cc5",
+          "notebookId": "b9424837-da66-9bd5-462a-b4f3fc661802",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
           "sessionTag": "Testsession"
         },
         "policy": {
@@ -146,8 +138,6 @@
         },
         "name": "Load file in datelake",
         "description": "Load a file using Kaggle API",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": []
       }
     ]
