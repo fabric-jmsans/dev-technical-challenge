@@ -258,6 +258,11 @@ The pipeline demonstrates orchestration concepts such as:
 - Modular processing
 - Reusability
 
+Execution Gantt:
+
+<img width="1762" height="715" alt="image" src="https://github.com/user-attachments/assets/c930d633-5c34-44c6-8ee5-cff8416f2dde" />
+
+
 ---
 
 # Reporting Layer
