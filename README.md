@@ -281,6 +281,9 @@ The report includes exploratory visualizations such as:
 
 The reporting layer was intentionally kept simple because the project focus was primarily on Data Engineering implementation rather than advanced clinical analytics.
 
+<img width="1297" height="725" alt="image" src="https://github.com/user-attachments/assets/eb4bdba8-1f61-44d1-9a25-d1c73a050a25" />
+
+
 ---
 
 # Technologies Used
