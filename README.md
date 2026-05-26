@@ -136,7 +136,7 @@ Responsibilities include:
 
 ### `nb_kaggle_ingest.Notebook`
 
-The project now automates the ingestion of the source dataset using the :contentReference[oaicite:0]{index=0} API instead of manual CSV uploads.
+The project now automates the ingestion of the source dataset using the Kaggle API instead of manual CSV uploads.
 
 Responsibilities:
 
