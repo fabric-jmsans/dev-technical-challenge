@@ -12,7 +12,7 @@ table ⠀Measures
 			                Study[Study Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: e78aeb25-7984-41c7-aff5-3f5935bb5a47
 
 		changedProperty = Name
@@ -23,7 +23,7 @@ table ⠀Measures
 			    DISTINCTCOUNT(Study[Study Short Title]),
 			    CROSSFILTER('Clinical trial'[Study Key],Study[Study Key],Both)
 			)
-		formatString: 0
+		formatString: #,0
 		lineageTag: cfb50b8a-7881-41e3-a1b3-2365985277fc
 
 		changedProperty = Name
@@ -39,7 +39,7 @@ table ⠀Measures
 			                Study[Study Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: 8c106375-2ced-4fac-9b71-3622be8f17eb
 
 		changedProperty = Name
@@ -55,7 +55,7 @@ table ⠀Measures
 			                Organization[Organization Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: debc5143-b0c3-4173-99a8-2c07ef46c6b8
 
 		changedProperty = Name
@@ -71,7 +71,7 @@ table ⠀Measures
 			                Organization[Organization Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: 2f536dd2-ee8b-45da-83c2-e6361be7b496
 
 		changedProperty = Name
@@ -87,7 +87,7 @@ table ⠀Measures
 			                Organization[Organization Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: 56ca152c-5d3f-44ea-927d-f69ad90ae072
 
 		changedProperty = Name
@@ -101,7 +101,7 @@ table ⠀Measures
 			                Intervention[Intervention Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: db540d59-fcc2-4aea-9c60-30e2d68c43f9
 
 		changedProperty = Name
@@ -115,7 +115,7 @@ table ⠀Measures
 			                Intervention[Intervention Key]
 			            )
 			        )
-		formatString: 0
+		formatString: #,0
 		lineageTag: 1d7c14bd-ee68-4e94-aedd-2ca198892428
 
 		changedProperty = Name
@@ -129,7 +129,7 @@ table ⠀Measures
 			                'Condition'[Condition Key])
 			        )
 			```
-		formatString: 0
+		formatString: #,0
 		lineageTag: 6589fe2c-f558-4095-a5db-47d1920f38fe
 
 		changedProperty = Name
@@ -143,7 +143,7 @@ table ⠀Measures
 			                'Condition'[Condition Key])
 			        )
 			```
-		formatString: 0
+		formatString: #,0
 		lineageTag: 59847407-46a9-4961-bcda-612de998f88e
 
 		changedProperty = Name
@@ -157,37 +157,37 @@ table ⠀Measures
 		changedProperty = FormatString
 
 	measure 'Outcome Measure Count' = DISTINCTCOUNT('Clinical trial'[Outcome Measure])
-		formatString: 0
+		formatString: #,0
 		lineageTag: b0952ce2-d755-419d-b3b5-9a1237ec19ac
 
 		changedProperty = Name
 
 	measure 'Overall Status Count' = DISTINCTCOUNT('Clinical trial'[Overall Status])
-		formatString: 0
+		formatString: #,0
 		lineageTag: a6f0a1a5-f8dc-4ac5-b02e-56e3376770f3
 
 		changedProperty = Name
 
 	measure 'Phases Count' = DISTINCTCOUNT('Clinical trial'[Phases])
-		formatString: 0
+		formatString: #,0
 		lineageTag: 9bb881af-a4db-4b56-8a77-79170799afb1
 
 		changedProperty = Name
 
 	measure 'Primary Purpose Count' = DISTINCTCOUNT('Clinical trial'[Primary Purpose])
-		formatString: 0
+		formatString: #,0
 		lineageTag: d8ab081a-c93b-4531-abfc-fea4204d2e4c
 
 		changedProperty = Name
 
 	measure 'Study Type Count' = DISTINCTCOUNT('Clinical trial'[Study Type])
-		formatString: 0
+		formatString: #,0
 		lineageTag: 52c0180b-c4e1-4a3b-935c-508ca29220e1
 
 		changedProperty = Name
 
 	measure 'Standard Age Count' = DISTINCTCOUNT('Clinical trial'[Standard Age])
-		formatString: 0
+		formatString: #,0
 		lineageTag: 31d00035-2ac9-4b08-8108-218446080390
 
 	partition ⠀Measures = m

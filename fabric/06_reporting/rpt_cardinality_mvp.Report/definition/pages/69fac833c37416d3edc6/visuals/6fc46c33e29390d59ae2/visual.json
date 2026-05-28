@@ -81,23 +81,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d66ed362ebbff985417a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Organization"
-              }
-            },
-            "Property": "Organization Full Name"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -12,6 +12,8 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
 
+annotation __TEdtr = 1
+
 ref table 'Clinical trial'
 ref table Intervention
 ref table Condition

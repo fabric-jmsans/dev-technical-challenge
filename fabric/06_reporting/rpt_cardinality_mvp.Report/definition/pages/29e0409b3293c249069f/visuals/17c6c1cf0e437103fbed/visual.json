@@ -43,12 +43,9 @@
               },
               "queryRef": "Study.Study Official Title",
               "nativeQueryRef": "Study Official Title",
-              "active": false
+              "active": true
             }
           ]
-        },
-        "Values": {
-          "projections": []
         }
       },
       "sortDefinition": {
@@ -70,6 +67,55 @@
         ]
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Study.Study Short Title"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Study"
+                    }
+                  },
+                  "Property": "Study Short Title"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Study.Study Official Title"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "''''' Abdominal Crunch Positions With the Others in Terms of Interspinous Distance in Adult Patients '''''"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
     "objects": {
       "columnHeaders": [
         {
@@ -134,37 +180,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "e0afe0636f86f0feb22b",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Study"
-              }
-            },
-            "Property": "Study Short Title"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "275d44ceaa8bad215331",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Study"
-              }
-            },
-            "Property": "Study Official Title"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

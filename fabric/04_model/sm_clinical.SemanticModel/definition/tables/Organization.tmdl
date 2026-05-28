@@ -5,7 +5,7 @@ table Organization
 	column 'Organization Key'
 		dataType: string
 		isHidden
-		isNullable: false
+		isKey
 		lineageTag: a8f4fb11-71d1-488a-80bd-bcb77bd21999
 		sourceLineageTag: organization_key
 		summarizeBy: none

@@ -146,37 +146,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "0fe40b1175298ad3727e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Organization"
-              }
-            },
-            "Property": "Responsible Party"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "7ee9f98a9a3cd3ee57df",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "⠀Measures"
-              }
-            },
-            "Property": "Number of trials"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

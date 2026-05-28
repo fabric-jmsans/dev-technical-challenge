@@ -123,7 +123,7 @@ table Calendar
 	column Date
 		dataType: dateTime
 		isKey
-		formatString: General Date
+		formatString: dd/mm/yyyy
 		lineageTag: 182dc5fe-0377-492e-a17e-6d11150c8f81
 		sourceLineageTag: date_value
 		summarizeBy: none
@@ -131,7 +131,11 @@ table Calendar
 
 		changedProperty = Name
 
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	partition Calendar = entity
 		mode: directLake

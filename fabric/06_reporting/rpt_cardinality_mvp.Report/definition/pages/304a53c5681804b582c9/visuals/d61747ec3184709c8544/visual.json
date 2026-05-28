@@ -4,10 +4,10 @@
   "position": {
     "x": 32,
     "y": 264,
-    "z": 2002,
+    "z": 1000,
     "height": 424.00000000000006,
     "width": 576,
-    "tabOrder": 2002
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "tableEx",
@@ -97,23 +97,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "29e43442bdad45095424",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Study"
-              }
-            },
-            "Property": "Study Short Title"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

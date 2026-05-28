@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "cc90e58f737cdba7092a",
   "position": {
-    "x": 676.66666666666674,
-    "y": 13.333333333333334,
+    "x": 676.6473029045643,
+    "y": 195.45228215767634,
     "z": 1000,
-    "height": 696.66666666666674,
-    "width": 592.5,
+    "height": 514.12448132780082,
+    "width": 592.73029045643159,
     "tabOrder": 1000
   },
   "visual": {
@@ -15,6 +15,21 @@
       "queryState": {
         "Values": {
           "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "⠀Measures"
+                    }
+                  },
+                  "Property": "Number of trials"
+                }
+              },
+              "queryRef": "⠀Measures.Number of trials",
+              "nativeQueryRef": "Trials",
+              "displayName": "Trials"
+            },
             {
               "field": {
                 "Column": {
@@ -31,12 +46,51 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Intervention"
+                  }
+                },
+                "Property": "Intervention Description"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
       "columnHeaders": [
         {
           "properties": {}
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "530.2333734713918D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Intervention.Intervention Description"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "⠀Measures.Number of trials"
+          }
         }
       ]
     },
@@ -85,7 +139,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "73401b52394647880517",
+        "name": "2aa85eb505015d0b8bf4",
         "field": {
           "Column": {
             "Expression": {
@@ -97,6 +151,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "98077e5f6a9c430362be",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "⠀Measures"
+              }
+            },
+            "Property": "Number of trials"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

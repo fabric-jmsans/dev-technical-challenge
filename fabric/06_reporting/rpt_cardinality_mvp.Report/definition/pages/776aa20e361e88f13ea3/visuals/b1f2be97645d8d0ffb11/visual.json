@@ -146,37 +146,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d5026328ee70acc41fdf",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Clinical trial"
-              }
-            },
-            "Property": "Primary Purpose"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "2e9faeb0e0ac1bae0649",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "⠀Measures"
-              }
-            },
-            "Property": "Number of trials"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
